@@ -25,6 +25,6 @@ module.exports = {
     quotes: ['error', 'single', { allowTemplateLiterals: true }],
   },
   settings: {
-    react: { version: 'detect' }, // for react version warnning
+    react: { version: 'detect' }, // for react version warning
   },
 };
