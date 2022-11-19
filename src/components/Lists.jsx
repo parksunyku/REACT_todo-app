@@ -4,7 +4,7 @@ import List from './List';
 import React from 'react';
 
 // eslint-disable-next-line react/display-name
-const Lists = React.memo(({ todoData, setTodoData }) => {
+const Lists = React.memo(({ todoData, setTodoData, handleClick }) => {
   console.log('Lists Component');
 
   const handleEnd = (result) => {
@@ -37,6 +37,7 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
                 >
                   {(provided, snapshot) => (
                     <List
+                      handleClick={handleClick}
                       key={data.id}
                       id={data.id}
                       title={data.title}

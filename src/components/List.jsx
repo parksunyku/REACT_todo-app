@@ -2,7 +2,16 @@ import React from 'react';
 
 // eslint-disable-next-line react/display-name
 const List = React.memo(
-  ({ id, title, completed, todoData, setTodoData, provided, snapshot }) => {
+  ({
+    id,
+    title,
+    completed,
+    todoData,
+    setTodoData,
+    provided,
+    snapshot,
+    handleClick,
+  }) => {
     console.log('List Component');
 
     const handleCompleteChange = (id) => {
@@ -12,11 +21,6 @@ const List = React.memo(
         }
         return data;
       });
-      setTodoData(newTodoData);
-    };
-
-    const handleClick = (id) => {
-      let newTodoData = todoData.filter((data) => data.id !== id);
       setTodoData(newTodoData);
     };
 
