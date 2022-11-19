@@ -23,6 +23,7 @@ const List = React.memo(
         return data;
       });
       setTodoData(newTodoData);
+      localStorage.setItem('todoData', JSON.stringify(newTodoData));
     };
 
     const handleEditChange = (event) => {
@@ -39,20 +40,22 @@ const List = React.memo(
         return data;
       });
       setTodoData(newTodoData);
+      localStorage.setItem('todoData', JSON.stringify(newTodoData));
+
       setIsEditing(false);
     };
 
     if (isEditing) {
       return (
         <div
-          className={`flex items-center justify-between w-full px-4 py-1 my-2 'bg-gray-100' text-gray-500 border rounded`}
+          className={`flex items-center justify-between w-full px-4 py-1 my-2 bg-gray-100 text-gray-500 border rounded`}
         >
           <div className='items-center'>
             <form onSubmit={handleSubmit}>
               <input
                 value={editedTitle}
                 onChange={handleEditChange}
-                className='w-full px-3 py-2 mr-4 text-gray-500 rounded '
+                className='w-full px-3 py-2 mr-4 text-gray-500 rounded'
               />
             </form>
           </div>

@@ -3,15 +3,19 @@ import './App.css';
 import Form from './components/Form';
 import Lists from './components/Lists';
 
+const initialTodoData = localStorage.getItem('todoData')
+  ? JSON.parse(localStorage.getItem('todoData'))
+  : [];
+
 export default function App() {
-  console.log('App Component');
-  const [todoData, setTodoData] = useState([]);
+  const [todoData, setTodoData] = useState(initialTodoData);
   const [value, setValue] = useState('');
 
   const handleClick = useCallback(
     (id) => {
       let newTodoData = todoData.filter((data) => data.id !== id);
       setTodoData(newTodoData);
+      localStorage.setItem('setTodoData', JSON.stringify(newTodoData));
     },
     [todoData]
   );
@@ -26,11 +30,13 @@ export default function App() {
     };
 
     setTodoData((prev) => [...prev, newTodo]);
+    localStorage.setItem('todoData', JSON.stringify([...todoData, newTodo]));
     setValue('');
   };
 
   const handleRemoveClick = () => {
     setTodoData([]);
+    localStorage.setItem('todoData', JSON.stringify([]));
   };
 
   return (
