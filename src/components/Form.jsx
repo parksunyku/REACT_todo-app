@@ -1,4 +1,6 @@
 export default function Form({ handleSubmit, value, setValue }) {
+  console.log('Form Component');
+
   const handleChange = (e) => {
     setValue(e.target.value);
   };
